@@ -426,4 +426,3 @@ print(hasil)
 [^1]: Muhammad Rizka Fadhli. November 2021. Intro to R Volume 3 : Dasar-Dasar Bahasa Pemograman R
 
     Mohammad Reza Faisal. April 2016. Seri Belajar Pemrograman : Pengenalan Bahasa Pemograman R
-
