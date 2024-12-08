@@ -421,3 +421,9 @@ print(hasil)
     -\> fungsi and (&) digunakan untuk memastikan bahwa kedua kondisi yaitu (nilai ujian dan absensi) harus memenuhi kriteria agar mahasiswa lulus. jika salah satu kondisi tidak terpenuhi, siswa tidak akan lulus
 
     -\> fungsi or (\|) digunakan untuk memastikan bahwa salah satu kondisi baik antara nilai ujian dan absensi telah memenuhi kriteria agar mahasiswa lulus. Jika salah satu kondisi tidak terpenuhi, siswa tidak akan lulus.
+# DAFTAR PUSTAKA[^1]
+
+[^1]: Muhammad Rizka Fadhli. November 2021. Intro to R Volume 3 : Dasar-Dasar Bahasa Pemograman R
+
+    Mohammad Reza Faisal. April 2016. Seri Belajar Pemrograman : Pengenalan Bahasa Pemograman R
+
