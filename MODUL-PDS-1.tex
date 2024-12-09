@@ -1,0 +1,832 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={MODUL LOGIKA DAN PENGULANGAN},
+  pdfauthor={Zahra Mahendra Putri, Regina Dwirahma Alisya},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{MODUL LOGIKA DAN PENGULANGAN}
+\author{Zahra Mahendra Putri, Regina Dwirahma Alisya}
+\date{2024-12-06}
+
+\begin{document}
+\maketitle
+
+\section{BAB 1 : DASAR PEMOGRAMAN R}\label{bab-1-dasar-pemograman-r}
+
+\subsection{1.1 Pengertian}\label{pengertian}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Statement If
+
+  Fungsi if adalah statement yang umum digunakan pada percabangan. If
+  adalah fungsi untuk membuat perbandingan logis antara nilai dan apa
+  yang diharapkan dengan menguji kondisi dan mengembalikan hasil jika
+  True atau False.
+\item
+  If Else
+
+  Fungsi ini di gunakan jika ada perintah yang akan dijalankan ketika
+  masing-masing kondisi bernilai True atau False. Fungsi ini juga
+  dikenal sebagai percabangan bersyarat, Ifelse berfungsi untuk
+  memastikan bahwa instruksi tertentu hanya akan dijalankan jika suatu
+  kondisi terpenuhi.
+\item
+  For loop
+
+  For loop merupakan jenis loop yang paling sederhana dan sering
+  digunakan. For-loop digunakan untuk mengulang sekumpulan objek,
+  seperti vektor, daftar, matriks, atau kerangka data, dan menerapkan
+  serangkaian operasi yang sama pada setiap item dari struktur data
+  tertentu. Selain for loop, ada juga jenis loop lainnya, yaitu while
+  loop dan repeat loop.
+\item
+  While loop
+
+  While loop merupakan loop yang digunakan ketika kita telah menetapkan
+  stop condition sebelumnya. Blok statement/kode yang sama akan terus
+  dijalankan sampai stop condition ini tercapai. Stop condition akan di
+  cek sebelum melakukan proses loop.
+\item
+  Repeat loop
+
+  Fungsi repeat loop adalah~untuk menjalankan kode atau statement yang
+  sama secara berulang-ulang hingga kondisi yang ditentukan tercapai.
+\item
+  Nested Ifelse
+
+  Fungsi nested if else adalah~untuk memeriksa kondisi baru setelah
+  kondisi sebelumnya telah ditemukan benar atau salah.~Nested if else
+  juga dikenal sebagai if bersarang, yaitu kondisi yang di dalamnya
+  terdapat kondisi lagi
+\item
+  Fungsi logika ``and'', ``or''
+
+  Fungsi logika ``and'' dan ``or'' di RStudio berfungsi
+  untuk~membandingkan dua kondisi logika, yaitu logika benar (TRUE) dan
+  logika salah (FALSE). Operator ``and'' ini akan mengembalikan TRUE
+  jika kedua nilai logika yang dibandingkan bernilai TRUE sedangkan
+  operator ``or'' ini akan mengembalikan TRUE jika kedua nilai logika
+  yang dibandingkan bernilai TRUE.
+\end{enumerate}
+
+\subsection{1.2 Pentingnya untuk analisis
+data}\label{pentingnya-untuk-analisis-data}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Statement If
+
+  Fungsi if adalah statement yang umum digunakan pada percabangan. If
+  adalah fungsi untuk membuat perbandingan logis antara nilai dan apa
+  yang diharapkan dengan menguji kondisi dan mengembalikan hasil jika
+  True atau False.
+\item
+  If Else
+
+  Fungsi ini di gunakan jika ada perintah yang akan dijalankan ketika
+  masing-masing kondisi bernilai True atau False. Fungsi ini juga
+  dikenal sebagai percabangan bersyarat, Ifelse berfungsi untuk
+  memastikan bahwa instruksi tertentu hanya akan dijalankan jika suatu
+  kondisi terpenuhi.
+\item
+  For loop
+
+  For loop merupakan jenis loop yang paling sederhana dan sering
+  digunakan. For-loop digunakan untuk mengulang sekumpulan objek,
+  seperti vektor, daftar, matriks, atau kerangka data, dan menerapkan
+  serangkaian operasi yang sama pada setiap item dari struktur data
+  tertentu. Selain for loop, ada juga jenis loop lainnya, yaitu while
+  loop dan repeat loop.
+\item
+  While loop
+
+  While loop digunakan untuk mengulang proses selama kondisi tertentu
+  terpenuhi. Singkatnya, misalkan kita ingin menabung 10 juta, tetapi
+  banyaknya waktu yang dibutuhkan untuk mencapai target Tabungan
+  tersebut tidak diketahui, namun di sisi lain kita mengetahui kapan
+  harus berhenti menabung disaat target sudah tercapai, bagaimana kita
+  mengetahuinya? Maka kita dapat mengetahuinya ketika tabungan itu
+  mencapai target.
+\item
+  Repeat Loop
+
+  Repeat loop dalam analisis data digunakan untuk menjalankan perintah
+  tertentu secara berulang hingga kondisi syarat tersebut
+  telah~terpenuhi
+\item
+  Nested Ifelse
+
+  Fungsi nested if else adalah~untuk memeriksa kondisi baru setelah
+  kondisi sebelumnya telah ditemukan benar atau salah.~Nested if else
+  juga dikenal sebagai if bersarang, yaitu kondisi yang di dalamnya
+  terdapat kondisi lagi
+\item
+  Fungsi logika ``and'', ``or''
+
+  Fungsi logika ``and'' dan ``or'' di RStudio berfungsi
+  untuk~membandingkan dua kondisi logika, yaitu logika benar (TRUE) dan
+  logika salah (FALSE). Operator ``and'' ini akan mengembalikan TRUE
+  jika kedua nilai logika yang dibandingkan bernilai TRUE sedangkan
+  operator ``or'' ini akan mengembalikan TRUE jika kedua nilai logika
+  yang dibandingkan bernilai TRUE.
+\end{enumerate}
+
+\section{BAB 2 : LOGIKA DAN PENGULANGAN DALAM
+R}\label{bab-2-logika-dan-pengulangan-dalam-r}
+
+\subsection{2.1 Function if}\label{function-if}
+
+Bentuk umum dari perintah if() adalah if(kondisi) ekspresi dan argumen
+yang dibutuhkan pada fungsi if() adalah sebuah vector logical tunggal
+bernilai TRUE atau FALSE. Berikut ini adalah sintaks dari fungsi If.
+
+if(kondisi) \{
+
+\ldots{}
+
+\}
+
+\subsection{\texorpdfstring{2.2 \textbf{Function
+ifelse}}{2.2 Function ifelse}}\label{function-ifelse}
+
+Bentuk umum dari perintah if() adalah if(kondisi) ekspresi dan argumen
+yang dibutuhkan pada fungsi if() adalah sebuah vector logical tunggal
+bernilai TRUE atau FALSE. Berikut ini adalah sintaks dari fungsi If.
+
+if(kondisi) \{
+
+\ldots{}
+
+\}
+
+\subsection{2.3 Function for loop}\label{function-for-loop}
+
+Pengulangan menggunakan statement for, Berikut ini sintaks dari for
+loop.
+
+for(i in 1:n) \{
+
+print(i)
+
+\}
+
+\subsection{2.4 Funciton While Loop}\label{funciton-while-loop}
+
+Cara lain untuk melakukan pengulangan adalah dengan menggunakan
+statement while. Sintaks dari statement ini adalah sebagai berikut.
+
+i = 1;
+
+while(i \textless= n)\{
+
+print(i);
+
+i = i+1;
+
+\}
+
+\subsection{2.5 Repeat Loop}\label{repeat-loop}
+
+Repeat digunakan untuk menjalankan blok pernyataan berulang kali hingga
+pernyataan break jump ditemukan dan untuk mengakhiri atau keluar dari
+loop harus menggunakan pernyataan break. Jika tidak menggunakan ini,
+pernyataan repeat akan berakhir dalam loop tak terbatas. Berikut ini
+adalah sintaks dari repeat loop.
+
+i = 1
+
+repeat\{
+
+print(i)
+
+if(i==n) \{break()\}
+
+i = i + 1
+
+\}
+
+\subsection{2.6 Function Nested ifelse}\label{function-nested-ifelse}
+
+Nested Ifelse adalah fungsi If yang berada di dalam If lainnya. Semakin
+menjorok ke dalam, maka pernyataan tersebut akan semakin ada di Tingkat
+bawah. Berikut ini sintaks dari nested ifelse.
+
+If (kondisi 1) \{
+
+If (kondisi 2) \{
+
+\} else \{
+
+\}
+
+\subsection{2.7 Function ``and (\&)'',
+``or(\textbar)''}\label{function-and-or}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Fungsi ``and''
+\end{enumerate}
+
+\begin{verbatim}
+Operator “and” diwakili dengan tanda ampersand ‘&’ dan ‘&&’. Berikut ini adalah sintaks dari logika “and”.
+\end{verbatim}
+
+If \{kondisi 1\&kondisi 2) \{
+
+\} else \{
+
+\}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Fungsi ``or''
+\end{enumerate}
+
+\begin{verbatim}
+Operator “or” diwakili dengan symbol pike ( \| ) dan ( \|\| ). Berikut ini adalah sintaks dari logika “or”.
+\end{verbatim}
+
+If (kondisi 1 \textbar\textbar{} kondisi~2)~\{
+
+\}~else~\{
+
+\}
+
+\section{BAB 3 : Implementasi study kasus
+nyata}\label{bab-3-implementasi-study-kasus-nyata}
+
+\subsection{3.1 STUDY KASUS IF}\label{study-kasus-if}
+
+Sebuah perusahaan ingin memberikan bonus 10\% dari gaji berdasarkan
+performa kerjanya. karyawan layak mendapat bonus jika peformanya diatas
+80. Peforma yang dimiliki oleh karyawan yaitu 85 dengan gaji 6..000.000.
+Apakah seorang karyawan berhak mendapatkan bonus ?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gaji }\OtherTok{\textless{}{-}} \DecValTok{6000000}
+\NormalTok{peforma }\OtherTok{\textless{}{-}} \DecValTok{85}
+\CommentTok{\#fungsi if}
+\ControlFlowTok{if}\NormalTok{ (peforma }\SpecialCharTok{\textgreater{}} \DecValTok{80}\NormalTok{) \{}
+\NormalTok{  bonus }\OtherTok{\textless{}{-}}\NormalTok{ gaji }\SpecialCharTok{*} \FloatTok{0.1}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Karyawan mendapat bonus sebesar :"}\NormalTok{, bonus))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Karyawan tidak mendapat bonus sebesar."}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Karyawan mendapat bonus sebesar : 6e+05"
+\end{verbatim}
+
+\subsection{3.2 STUDY KASUS IFELSE}\label{study-kasus-ifelse}
+
+Sebuah perusahaan memiliki data gaji dan peforma kerja beberapa
+karyawan. karyawan mendapatkan bonus 10\% dari gaji jika peforma mereka
+diatas 85. tampilkan data karyawan, peforma, besaran bonus dan status
+apakah beberapa karyawan di perusahaan tersebut layak mendapatkan bonus.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gaji }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{6000000}\NormalTok{, }\DecValTok{5000000}\NormalTok{, }\DecValTok{4500000}\NormalTok{, }\DecValTok{7000000}\NormalTok{, }\DecValTok{8000000}\NormalTok{, }\DecValTok{3000000}\NormalTok{)}
+\NormalTok{peforma }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{86}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{75}\NormalTok{)}
+\CommentTok{\#menghitung bonus }
+\NormalTok{bonus }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(peforma }\SpecialCharTok{\textgreater{}} \DecValTok{85}\NormalTok{, gaji }\SpecialCharTok{*}\FloatTok{0.1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{keterangan }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(peforma }\SpecialCharTok{\textgreater{}} \DecValTok{85}\NormalTok{, }\StringTok{"Karyawan mendapatkan bonus:"}\NormalTok{, }\StringTok{"Karyawan tidak mendapatkan bonus"}\NormalTok{)}
+\NormalTok{data\_karyawan }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Gaji =}\NormalTok{ gaji, }\AttributeTok{performa =}\NormalTok{ peforma, }\AttributeTok{Bonus =}\NormalTok{ bonus, }\AttributeTok{Status =}\NormalTok{ keterangan)}
+\FunctionTok{print}\NormalTok{(data\_karyawan)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Gaji performa Bonus                           Status
+## 1 6000000       86 6e+05      Karyawan mendapatkan bonus:
+## 2 5000000       70 0e+00 Karyawan tidak mendapatkan bonus
+## 3 4500000       75 0e+00 Karyawan tidak mendapatkan bonus
+## 4 7000000       80 0e+00 Karyawan tidak mendapatkan bonus
+## 5 8000000       90 8e+05      Karyawan mendapatkan bonus:
+## 6 3000000       75 0e+00 Karyawan tidak mendapatkan bonus
+\end{verbatim}
+
+\subsection{3.3 For loop}\label{for-loop}
+
+pengecekan angka 1-30 menggunakan for loop untuk menentukan ganjil dan
+genap dari sebuah bilangan menggunakan for loop
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{) \{          }\CommentTok{\#for loop untuk mengecek angka ganjil atau genap}
+  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{       }\CommentTok{\#jika angka dibagi 2 bersisa 0 maka itu genap}
+    \FunctionTok{cat}\NormalTok{(i, }\StringTok{"adalah angka genap}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{cat}\NormalTok{(i, }\StringTok{"adalah angka ganjil}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1 adalah angka ganjil
+## 2 adalah angka genap
+## 3 adalah angka ganjil
+## 4 adalah angka genap
+## 5 adalah angka ganjil
+## 6 adalah angka genap
+## 7 adalah angka ganjil
+## 8 adalah angka genap
+## 9 adalah angka ganjil
+## 10 adalah angka genap
+## 11 adalah angka ganjil
+## 12 adalah angka genap
+## 13 adalah angka ganjil
+## 14 adalah angka genap
+## 15 adalah angka ganjil
+## 16 adalah angka genap
+## 17 adalah angka ganjil
+## 18 adalah angka genap
+## 19 adalah angka ganjil
+## 20 adalah angka genap
+## 21 adalah angka ganjil
+## 22 adalah angka genap
+## 23 adalah angka ganjil
+## 24 adalah angka genap
+## 25 adalah angka ganjil
+## 26 adalah angka genap
+## 27 adalah angka ganjil
+## 28 adalah angka genap
+## 29 adalah angka ganjil
+## 30 adalah angka genap
+\end{verbatim}
+
+\subsection{3.4 While loop}\label{while-loop}
+
+pengecekan angka 1-30 menggunakan for loop untuk menentukan ganjil dan
+genap dari sebuah bilangan menggunakan for loop
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1} \CommentTok{\#mulai dari angka 1}
+\ControlFlowTok{while}\NormalTok{ (i }\SpecialCharTok{\textless{}=} \DecValTok{30}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{       }\CommentTok{\#jika angka dibagi 2 bersisa 0 maka itu genap}
+    \FunctionTok{cat}\NormalTok{(i, }\StringTok{"adalah angka genap}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{                 }\CommentTok{\#jika tidak berarti ganjil}
+  \FunctionTok{cat}\NormalTok{(i, }\StringTok{"adalah angka ganjil}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1}    \CommentTok{\#setiap iterasi, i+1 untuk melanjutkan ke angka berikutnya}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 1 adalah angka ganjil
+## 2 adalah angka genap
+## 3 adalah angka ganjil
+## 4 adalah angka genap
+## 5 adalah angka ganjil
+## 6 adalah angka genap
+## 7 adalah angka ganjil
+## 8 adalah angka genap
+## 9 adalah angka ganjil
+## 10 adalah angka genap
+## 11 adalah angka ganjil
+## 12 adalah angka genap
+## 13 adalah angka ganjil
+## 14 adalah angka genap
+## 15 adalah angka ganjil
+## 16 adalah angka genap
+## 17 adalah angka ganjil
+## 18 adalah angka genap
+## 19 adalah angka ganjil
+## 20 adalah angka genap
+## 21 adalah angka ganjil
+## 22 adalah angka genap
+## 23 adalah angka ganjil
+## 24 adalah angka genap
+## 25 adalah angka ganjil
+## 26 adalah angka genap
+## 27 adalah angka ganjil
+## 28 adalah angka genap
+## 29 adalah angka ganjil
+## 30 adalah angka genap
+\end{verbatim}
+
+\subsection{3.5 Repeat Loop}\label{repeat-loop-1}
+
+Membuat program menggunakan repeat loop yang akan menambahkan angka dari
+1,2,3 dan seterusnya hingga jumlah atau totalnya mencapai 50. ketika
+total pencapaian melebihi 50 maka program akan berhenti.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{total }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{awal }\OtherTok{\textless{}{-}} \DecValTok{1}
+\ControlFlowTok{repeat}\NormalTok{\{}
+\NormalTok{  total }\OtherTok{\textless{}{-}}\NormalTok{ total }\SpecialCharTok{+}\NormalTok{ awal}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Menambahkan :"}\NormalTok{, awal, }\StringTok{"Total saat ini :"}\NormalTok{, total, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{  awal }\OtherTok{\textless{}{-}}\NormalTok{ awal}\SpecialCharTok{+}\DecValTok{1}
+  \ControlFlowTok{if}\NormalTok{ (total }\SpecialCharTok{\textgreater{}=} \DecValTok{50}\NormalTok{) \{}
+    \FunctionTok{cat}\NormalTok{(}\StringTok{"Penjumlahan selesai. Total akhir :"}\NormalTok{, total, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+    \ControlFlowTok{break}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Menambahkan : 1 Total saat ini : 1 
+## Menambahkan : 2 Total saat ini : 3 
+## Menambahkan : 3 Total saat ini : 6 
+## Menambahkan : 4 Total saat ini : 10 
+## Menambahkan : 5 Total saat ini : 15 
+## Menambahkan : 6 Total saat ini : 21 
+## Menambahkan : 7 Total saat ini : 28 
+## Menambahkan : 8 Total saat ini : 36 
+## Menambahkan : 9 Total saat ini : 45 
+## Menambahkan : 10 Total saat ini : 55 
+## Penjumlahan selesai. Total akhir : 55
+\end{verbatim}
+
+\subsection{3.6 Nested if-else}\label{nested-if-else}
+
+penentuan nilai grade siswa berdasarkan nilai ujian :
+
+Terdapat data nilai 6 siswa berikut :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Patricia : 90
+\item
+  Faiz : 85
+\item
+  Kinan : 70
+\item
+  Andika : 60
+\item
+  Rafi : 75
+\item
+  Stella : 88
+\end{enumerate}
+
+\begin{itemize}
+\item
+  ``A : Sangat Baik'' jika nilai \textgreater= 85
+\item
+  ``B : Baik'' jika nilai 70-84
+\item
+  ``C : Cukup'' jika nilai 50-69
+\item
+  '' D : Kurang'' jika nilai \textless{} 50
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nama }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{ (}\StringTok{"Patricia"}\NormalTok{, }\StringTok{"Faiz"}\NormalTok{, }\StringTok{"Kinan"}\NormalTok{, }\StringTok{"Andika"}\NormalTok{, }\StringTok{"Rafi"}\NormalTok{, }\StringTok{"Stella"}\NormalTok{, }\StringTok{"Fabian"}\NormalTok{)}
+\NormalTok{nilai }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{90}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{88}\NormalTok{, }\DecValTok{45}\NormalTok{)}
+\NormalTok{keterangan }\OtherTok{\textless{}{-}} \FunctionTok{character}\NormalTok{(}\FunctionTok{length}\NormalTok{(nilai))}
+
+
+\CommentTok{\#nested if{-}else}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(nilai)) \{}
+  \ControlFlowTok{if}\NormalTok{ (nilai[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{85}\NormalTok{)\{}
+\NormalTok{    keterangan[i] }\OtherTok{\textless{}{-}} \StringTok{"A : Sangat Baik"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (nilai[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{70}\NormalTok{) \{}
+\NormalTok{    keterangan[i] }\OtherTok{\textless{}{-}} \StringTok{"B : Baik"}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (nilai[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{50}\NormalTok{) \{}
+\NormalTok{    keterangan[i] }\OtherTok{\textless{}{-}} \StringTok{"C : Cukup Baik"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    keterangan[i] }\OtherTok{\textless{}{-}} \StringTok{"D : Kurang Baik"}
+\NormalTok{  \}}
+\NormalTok{\}}
+\CommentTok{\#membuat menjadi data frame }
+\NormalTok{hasil }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Nama =}\NormalTok{ nama,}
+  \AttributeTok{Nilai =}\NormalTok{ nilai,}
+  \AttributeTok{Keterangan =}\NormalTok{ keterangan}
+\NormalTok{)}
+\FunctionTok{print}\NormalTok{(hasil)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Nama Nilai      Keterangan
+## 1 Patricia    90 A : Sangat Baik
+## 2     Faiz    85 A : Sangat Baik
+## 3    Kinan    70        B : Baik
+## 4   Andika    60  C : Cukup Baik
+## 5     Rafi    75        B : Baik
+## 6   Stella    88 A : Sangat Baik
+## 7   Fabian    45 D : Kurang Baik
+\end{verbatim}
+
+\subsection{3.7 Logika Dasar and (\&), or
+(\textbar)}\label{logika-dasar-and-or}
+
+Universitas Sultan Ageng Tirtayasa menentukan status kelulusan mahasiswa
+berdasarkan dua kriteria berikut :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Nilai rata-rata mahasiswa harus \textgreater= 75
+\item
+  Kehadiran mahasiswa harus \textgreater= 80\%
+\end{enumerate}
+
+jika kedua kriteria terpenuhi, mahasiswa dinyatakan lulus. jika kedua
+kriteria tidak terpenuhi, mahasiswa dinyatakan tidak lulus.
+
+tentukan status kelulusan untuk daftar mahasiswa berikut :
+
+\begin{itemize}
+\item
+  Stella : 85, Kehadiran : 85\%
+\item
+  Rafly : 65, Kehadiran : 70\%
+\item
+  Faiz : 78, Kehadiran : 85\%
+\item
+  Pingkan : 90, Kehadiran : 80\%
+\item
+  Zilda : 70, Kehadiran : 60\%
+\item
+  Kinan : 73, Kehadiran : 80\%
+\end{itemize}
+
+Tampilkan tabel yang menunjukkan Nama, Nilai rata-rata, Kehadiran, dan
+Status Kelulusan masing-masing mahasiswa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nama }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Stella"}\NormalTok{, }\StringTok{"Rafly"}\NormalTok{, }\StringTok{"Faiz"}\NormalTok{, }\StringTok{"Pingkan"}\NormalTok{, }\StringTok{"Zilda"}\NormalTok{, }\StringTok{"Kinan"}\NormalTok{)}
+\NormalTok{nilai }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{85}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{78}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{73}\NormalTok{)}
+\NormalTok{kehadiran }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{85}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{80}\NormalTok{)}
+\NormalTok{kelulusan }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(nilai }\SpecialCharTok{\textgreater{}=} \DecValTok{75} \SpecialCharTok{\&}\NormalTok{ kehadiran }\SpecialCharTok{\textgreater{}=} \DecValTok{80}\NormalTok{, }\StringTok{"Lulus"}\NormalTok{, }\StringTok{"Tidak Lulus"}\NormalTok{)}
+\CommentTok{\#status kelulusan untuk setiap mahasiswa }
+\NormalTok{status }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(nama)) \{}
+  \ControlFlowTok{if}\NormalTok{ (nilai[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{75} \SpecialCharTok{\&\&}\NormalTok{ kehadiran[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{80}\NormalTok{) \{}
+\NormalTok{    status[i] }\OtherTok{\textless{}{-}} \StringTok{"Lulus"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    status[i] }\OtherTok{\textless{}{-}} \StringTok{"Tidak Lulus"}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\#menampilkan hasil}
+\NormalTok{hasil }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Nama=}\NormalTok{nama, }\AttributeTok{Nilai=}\NormalTok{nilai, }\AttributeTok{Kehadiran=}\NormalTok{kehadiran, }\AttributeTok{Status=}\NormalTok{status)}
+\FunctionTok{print}\NormalTok{(hasil)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Nama Nilai Kehadiran      Status
+## 1  Stella    85        85       Lulus
+## 2   Rafly    65        70 Tidak Lulus
+## 3    Faiz    78        85       Lulus
+## 4 Pingkan    90        80       Lulus
+## 5   Zilda    70        60 Tidak Lulus
+## 6   Kinan    73        80 Tidak Lulus
+\end{verbatim}
+
+\subsection{3.8 Logika Dasar or (\textbar)}\label{logika-dasar-or}
+
+Universitas Sultan Ageng Tirtayasa menentukan status kelulusan mahasiswa
+berdasarkan dua kriteria berikut :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Nilai rata-rata mahasiswa harus \textgreater= 75
+\item
+  Kehadiran mahasiswa harus \textgreater= 80\%
+\end{enumerate}
+
+jika salah satu kriteria terpenuhi, mahasiswa dinyatakan lulus. jika
+salah satu kriteria tidak terpenuhi, mahasiswa dinyatakan tidak lulus.
+
+tentukan status kelulusan untuk daftar mahasiswa berikut :
+
+\begin{itemize}
+\item
+  Stella : 85, Kehadiran : 85\%
+\item
+  Rafly : 65, Kehadiran : 70\%
+\item
+  Faiz : 78, Kehadiran : 85\%
+\item
+  Pingkan : 90, Kehadiran : 80\%
+\item
+  Zilda : 70, Kehadiran : 60\%
+\item
+  Kinan : 80, Kehadiran : 90\%
+\end{itemize}
+
+Tampilkan tabel yang menunjukkan Nama, Nilai rata-rata, Kehadiran, dan
+Status Kelulusan masing-masing mahasiswa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nama }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Stella"}\NormalTok{, }\StringTok{"Rafly"}\NormalTok{, }\StringTok{"Faiz"}\NormalTok{, }\StringTok{"Pingkan"}\NormalTok{, }\StringTok{"Zilda"}\NormalTok{, }\StringTok{"Kinan"}\NormalTok{)}
+\NormalTok{nilai }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{85}\NormalTok{, }\DecValTok{65}\NormalTok{, }\DecValTok{78}\NormalTok{, }\DecValTok{90}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{73}\NormalTok{)}
+\NormalTok{kehadiran }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{85}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{80}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(nama)) \{}
+  \ControlFlowTok{if}\NormalTok{ (nilai[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{75} \SpecialCharTok{||}\NormalTok{ kehadiran[i] }\SpecialCharTok{\textgreater{}=} \DecValTok{80}\NormalTok{) \{}
+\NormalTok{    status[i] }\OtherTok{\textless{}{-}} \StringTok{"Lulus"}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    status[i] }\OtherTok{\textless{}{-}} \StringTok{"Tidak Lulus"}
+\NormalTok{  \}}
+\NormalTok{\}}
+\CommentTok{\#menampilkan hasil }
+\NormalTok{hasil }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Nama=}\NormalTok{nama, }\AttributeTok{Nilai=}\NormalTok{nilai, }\AttributeTok{Kehadiran=}\NormalTok{kehadiran, }\AttributeTok{Status=}\NormalTok{status)}
+\FunctionTok{print}\NormalTok{(hasil) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Nama Nilai Kehadiran      Status
+## 1  Stella    85        85       Lulus
+## 2   Rafly    65        70 Tidak Lulus
+## 3    Faiz    78        85       Lulus
+## 4 Pingkan    90        80       Lulus
+## 5   Zilda    70        60 Tidak Lulus
+## 6   Kinan    73        80       Lulus
+\end{verbatim}
+
+\section{BAB 4 : Kesimpulan}\label{bab-4-kesimpulan}
+
+\subsection{4.1 Komparansi antar fungsi}\label{komparansi-antar-fungsi}
+
+\begin{itemize}
+\item
+  if vs ifelse :
+
+  -\textgreater{} if digunakan untuk kondisi sederhana yang hanya
+  terdapat data tunggal
+
+  -\textgreater{} ifelse digunakan untuk kondisi yang lebih compleks
+  dengan dengan memiliki data yang lebih dari 1 data atau pada vektor
+  yang lebih besar.
+\item
+  for vs while :
+
+  -\textgreater{} for loop digunakan ketika sudah mengetahui batas awal
+  dan akhir pengulangan
+
+  -\textgreater{} while loop digunakan ketika hanya tau syarat batas
+  angka yang diberikan (misalnya ketika didalam soal batas angka harus
+  dibawah atau sama dengan 30), tetapi pengulangannya diatur sendiri.
+\item
+  nested ifelse :
+
+  -\textgreater{} nested if-else digunakan untuk menangani suatu kondisi
+  yang bergantung pada kondisi sebelumnya. contoh pada study kasus
+  diatas ingin memeriksa kategori grade nilai sebuah mahasiswa
+  bergantung dengan kriteria yang sudah disebutkan disoal.
+\item
+  repeat loop
+\end{itemize}
+
+\begin{verbatim}
+-\> repeat loop adalah pengulangan yang akan terus berjalan hingga diberikan perintah untuk berhenti. perbedaannya dengan loop lain adalah untuk menentukan pengulangan itu akan berhenti menggunakan perintah break. seperti pada study kasus diatas bahwa repeat loop diminta untuk melakukan pengulangan angka hingga jumlah atau totalnya mencapai 50. ketika total pencapaian melebihi 50 maka program akan berhenti dan itu menggunakan perintah break.
+\end{verbatim}
+
+\begin{itemize}
+\item
+  Logika dasar and (\&), or(\textbar)
+
+  -\textgreater{} fungsi and (\&) digunakan untuk memastikan bahwa kedua
+  kondisi yaitu (nilai ujian dan absensi) harus memenuhi kriteria agar
+  mahasiswa lulus. jika salah satu kondisi tidak terpenuhi, siswa tidak
+  akan lulus
+
+  -\textgreater{} fungsi or (\textbar) digunakan untuk memastikan bahwa
+  salah satu kondisi baik antara nilai ujian dan absensi telah memenuhi
+  kriteria agar mahasiswa lulus. Jika salah satu kondisi tidak
+  terpenuhi, siswa tidak akan lulus.
+\end{itemize}
+
+\section[DAFTAR PUSTAKA]{\texorpdfstring{DAFTAR
+PUSTAKA\footnote{Muhammad Rizka Fadhli. November 2021. Intro to R Volume
+  3 : Dasar-Dasar Bahasa Pemograman R
+
+  Mohammad Reza Faisal. April 2016. Seri Belajar Pemrograman :
+  Pengenalan Bahasa Pemograman R}}{DAFTAR PUSTAKA}}\label{daftar-pustaka1}
+
+muh
+
+\end{document}
