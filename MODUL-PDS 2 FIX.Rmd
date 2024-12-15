@@ -3,14 +3,18 @@ title: "MODUL LOGIKA DAN PENGULANGAN"
 author: "Zahra Mahendra Putri, Regina Dwirahma Alisya"
 date: "2024-12-06"
 output:
-  pdf_document:
+  html_document:
     toc: true
     toc_depth: '2'
+    df_print: paged
   word_document:
     toc: true
     toc_depth: 2
-editor_options: 
-  markdown: 
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+editor_options:
+  markdown:
     wrap: 72
 ---
 
